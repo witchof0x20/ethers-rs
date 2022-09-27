@@ -25,11 +25,11 @@ pub use log::{decode_logs, EthLogDecode, LogMeta};
 
 pub mod stream;
 
-#[cfg(any(test, feature = "abigen"))]
-#[cfg_attr(docsrs, doc(cfg(feature = "abigen")))]
+#[cfg(any(test, feature = "abigen", feature = "abigen-offline"))]
+#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature = "abigen-offline")))]
 mod multicall;
-#[cfg(any(test, feature = "abigen"))]
-#[cfg_attr(docsrs, doc(cfg(feature = "abigen")))]
+#[cfg(any(test, feature = "abigen", feature = "abigen-offline"))]
+#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature = "abigen-offline")))]
 pub use multicall::{
     Multicall, MulticallContract, MulticallError, MulticallVersion, MULTICALL_ADDRESS,
     MULTICALL_SUPPORTED_CHAIN_IDS,
@@ -46,14 +46,14 @@ pub mod builders {
     };
 }
 
-#[cfg(any(test, feature = "abigen", feature="abigen-offline"))]
-#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature="abigen-offline")))]
+#[cfg(any(test, feature = "abigen", feature = "abigen-offline"))]
+#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature = "abigen-offline")))]
 pub use ethers_contract_abigen::{
     Abigen, ContractFilter, ExcludeContracts, InternalStructs, MultiAbigen, RawAbi, SelectContracts,
 };
 
-#[cfg(any(test, feature = "abigen"))]
-#[cfg_attr(docsrs, doc(cfg(feature = "abigen")))]
+#[cfg(any(test, feature = "abigen", feature = "abigen-offline"))]
+#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature = "abigen-offline")))]
 pub use ethers_contract_derive::{
     abigen, EthAbiCodec, EthAbiType, EthCall, EthDisplay, EthError, EthEvent,
 };
