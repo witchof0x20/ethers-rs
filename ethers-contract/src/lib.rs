@@ -46,8 +46,8 @@ pub mod builders {
     };
 }
 
-#[cfg(any(test, feature = "abigen"))]
-#[cfg_attr(docsrs, doc(cfg(feature = "abigen")))]
+#[cfg(any(test, feature = "abigen", feature="abigen-offline"))]
+#[cfg_attr(docsrs, doc(cfg(feature = "abigen", feature="abigen-offline")))]
 pub use ethers_contract_abigen::{
     Abigen, ContractFilter, ExcludeContracts, InternalStructs, MultiAbigen, RawAbi, SelectContracts,
 };
