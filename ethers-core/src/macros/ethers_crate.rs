@@ -55,13 +55,13 @@ pub fn determine_ethers_crates() -> (&'static str, &'static str, &'static str) {
     let manifest_dir = if let Ok(manifest_dir) = manifest_dir {
         manifest_dir
     } else {
-        return ("ethers::core", "ethers::contract", "ethers::providers")
+        return ("ethers::core", "ethers::contract", "ethers::providers");
     };
 
     // check if the lock file exists, if it's missing we need to clean up afterward
     let lock_file = format!("{}/Cargo.lock", manifest_dir);
     let needs_lock_file_cleanup = !std::path::Path::new(&lock_file).exists();
-
+    return ("ethers_core", "ethers_contract", "ethers_providers");
     let res = MetadataCommand::new()
         .manifest_path(&format!("{}/Cargo.toml", manifest_dir))
         .exec()
@@ -81,7 +81,7 @@ pub fn determine_ethers_crates() -> (&'static str, &'static str, &'static str) {
                 ]
                 .contains(&pkg.name.as_str())
                 {
-                    return sub_crates
+                    return sub_crates;
                 }
 
                 let mut has_ethers_core = false;
@@ -105,7 +105,7 @@ pub fn determine_ethers_crates() -> (&'static str, &'static str, &'static str) {
                 }
 
                 if has_ethers_core && has_ethers_contract && has_ethers_providers {
-                    return sub_crates
+                    return sub_crates;
                 }
 
                 None
